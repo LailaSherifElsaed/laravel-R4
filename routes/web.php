@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -83,3 +85,28 @@ Route::prefix('blog')->group(function () {
     return 'Medical page';
     });
 });
+
+// Route :: post('logged',function(){
+//     return "you are logged in";
+// })->name('logged');
+
+// Route :: get('control',[ExampleController::class,'show']);
+
+
+// task3 
+
+Route::get('Login', function () {
+    return view('login');
+});
+
+Route::post('logged', [LoginController::class, 'login'])->name('logged');
+
+
+
+
+
+
+
+
+
+
