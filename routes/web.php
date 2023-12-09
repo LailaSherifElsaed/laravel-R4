@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,11 @@ Route::get('Login', function () {
 Route::post('logged', [LoginController::class, 'login'])->name('logged');
 
 
+//Day4
+
+Route ::get('createCar',[CarController::class,'create'])->name('createCar');
+Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+Route ::get('cars',[CarController::class,'index']);
 
 
 
