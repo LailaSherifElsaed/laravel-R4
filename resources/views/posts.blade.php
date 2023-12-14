@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+@include('includes.nav_posts')
 
 <div class="container">
   <h2>Posts Data</h2>        
@@ -19,6 +20,8 @@
         <th>Description</th>
         <th>Published</th>
         <th>Author</th>
+        <th>Created At</th>
+        <th>Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +31,8 @@
         <td>{{$post->description}}</td>
         <td>{{$post->published ? 'yes':'no'}}</td>
         <td>{{$post->author}}</td>
+        <td>{{$post->created_at}}</td>
+        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
       </tr>
     @endforeach
 

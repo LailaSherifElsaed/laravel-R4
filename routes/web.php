@@ -105,18 +105,23 @@ Route::prefix('blog')->group(function () {
 
 //Day4
 
-Route ::get('createCar',[CarController::class,'create'])->name('createCar');
-Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
-Route ::get('cars',[CarController::class,'index'])->name('cars');
-Route ::get('updateCar/{id}',[CarController::class,'edit']);
-Route ::put('update/{id}',[CarController::class,'update'])->name('update');
-Route ::get('showCar/{id}',[CarController::class,'show'])->name('update');
+// Route ::get('createCar',[CarController::class,'create'])->name('createCar');
+// Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+// Route ::get('cars',[CarController::class,'index'])->name('cars');
+
+//Day5
+// Route ::get('updateCar/{id}',[CarController::class,'edit']);
+// Route ::put('update/{id}',[CarController::class,'update'])->name('update');
+// Route ::get('showCar/{id}',[CarController::class,'show'])->name('update');
 
 //Task4
 Route ::get('createPost',[PostController::class,'create'])->name('createPost');
 Route::post('storePost',[PostController::class,'store'])->name('storePost');
-Route ::get('posts',[PostController::class,'index']);
+Route ::get('posts',[PostController::class,'index'])->name('posts');
 
+//Task5
+Route ::get('updatePost/{id}',[PostController::class,'edit']);
+Route ::put('update/{id}',[PostController::class,'update'])->name('update');
 
 
 
