@@ -7,11 +7,11 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
-    private $columns = [
-        'title',
-        'description',
-        'published',
-        ];
+    // private $columns = [
+    //     'title',
+    //     'description',
+    //     'published',
+    //     ];
     /**
      * Display a listing of the resource.
      */
@@ -46,8 +46,11 @@ class CarController extends Controller
         // }
         // $cars->save();
         // return 'Data added succesfully';
+        // $data=$request->only($this->columns);
 
-        $data=$request->only($this->columns);
+        $data=$request->validate([
+            'title'=>'required|string|max:50',
+            'description'=> 'required|string']);
         $data['published']=isset($request->published);
         Car::create($data);
         return redirect('cars');
@@ -76,10 +79,10 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data=$request->only($this->columns);
-        $data['published']=isset($request->published);
-        Car::where('id', $id)->update($data);
-        return redirect('cars');
+        // $data=$request->only($this->columns);
+        // $data['published']=isset($request->published);
+        // Car::where('id', $id)->update($data);
+        // return redirect('cars');
     }
 
     /**
@@ -87,6 +90,31 @@ class CarController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Car::where('id', $id)->delete();
+        return redirect('cars');
+        
+    }
+
+    //trashed
+    public function trashed()
+    {
+        $cars=Car::onlyTrashed()->get();
+        return view('trashed',compact('cars'));
+        
+    }
+
+    //force_delete
+    public function forceDelete(string $id)
+    {
+         Car::where('id', $id)->forceDelete();
+        return redirect('cars');
+        
+    }
+//restore
+    public function restoreCar(string $id)
+    {
+         Car::where('id', $id)->restore();
+        return redirect('cars');
+        
     }
 }

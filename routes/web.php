@@ -105,14 +105,14 @@ Route::prefix('blog')->group(function () {
 
 //Day4
 
-// Route ::get('createCar',[CarController::class,'create'])->name('createCar');
-// Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
-// Route ::get('cars',[CarController::class,'index'])->name('cars');
+Route ::get('createCar',[CarController::class,'create'])->name('createCar');
+Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+Route ::get('cars',[CarController::class,'index'])->name('cars');
 
 //Day5
-// Route ::get('updateCar/{id}',[CarController::class,'edit']);
-// Route ::put('update/{id}',[CarController::class,'update'])->name('update');
-// Route ::get('showCar/{id}',[CarController::class,'show'])->name('update');
+Route ::get('updateCar/{id}',[CarController::class,'edit']);
+Route ::put('update/{id}',[CarController::class,'update'])->name('update');
+Route ::get('showCar/{id}',[CarController::class,'show'])->name('update');
 
 //Task4
 Route ::get('createPost',[PostController::class,'create'])->name('createPost');
@@ -125,3 +125,8 @@ Route ::put('update/{id}',[PostController::class,'update'])->name('update');
 
 
 
+//Day6
+Route ::get('deleteCar/{id}',[CarController::class,'destroy']);
+Route ::get('trashed',[CarController::class,'trashed'])->name('trashed');
+Route ::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
+Route ::get('restoreCar/{id}',[CarController::class,'restoreCar'])->name('restoreCar');
