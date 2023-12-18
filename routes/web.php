@@ -130,3 +130,9 @@ Route ::get('deleteCar/{id}',[CarController::class,'destroy']);
 Route ::get('trashed',[CarController::class,'trashed'])->name('trashed');
 Route ::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
 Route ::get('restoreCar/{id}',[CarController::class,'restoreCar'])->name('restoreCar');
+
+//Task6
+Route ::get('deletePost/{id}',[PostController::class,'destroy']);
+Route ::get('trashed_posts',[PostController::class,'trash'])->name('trashed_posts');
+Route ::get('forceDeletePost/{id}',[PostController::class,'force_delete'])->name('forceDeletePost');
+Route ::get('restorePost/{id}',[PostController::class,'restore_post'])->name('restorePost');

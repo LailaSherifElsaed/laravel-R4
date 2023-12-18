@@ -34,17 +34,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $posts = new Post();
-        $posts->title = $request->title;
-        $posts->description = $request->description;
-        if(isset($request->published)){
-            $posts->published = 1;
-        }else{
-            $posts->published = 0;
-        }
-        $posts->author = $request->author;
-        $posts->save();
-        return 'Data added succesfully';
+        // $posts = new Post();
+        // $posts->title = $request->title;
+        // $posts->description = $request->description;
+        // if(isset($request->published)){
+        //     $posts->published = 1;
+        // }else{
+        //     $posts->published = 0;
+        // }
+        // $posts->author = $request->author;
+        // $posts->save();
+        $data=$request->validate([
+            'title'=>'required|string',
+            'description'=> 'required|string',
+            'author'=> 'required|string',
+            ]);
+        $data['published']=isset($request->published);
+        Post::create($data);
+        return redirect('posts');
 
         
     }
@@ -82,6 +89,26 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect('posts');
+    }
+
+    public function trash()
+    {
+        $posts=Post::onlyTrashed()->get();
+        return view('trashed_posts',compact('posts'));
+    }
+
+    public function force_delete(string $id)
+    {
+        Post::where('id', $id)->forceDelete();
+        return redirect('trashed_posts');
+    }
+
+    public function restore_post(string $id)
+    {
+        Post::where('id', $id)->restore();
+        return redirect('posts');
     }
 }
+
