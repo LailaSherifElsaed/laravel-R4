@@ -136,3 +136,14 @@ Route ::get('deletePost/{id}',[PostController::class,'destroy']);
 Route ::get('trashed_posts',[PostController::class,'trash'])->name('trashed_posts');
 Route ::get('forceDeletePost/{id}',[PostController::class,'force_delete'])->name('forceDeletePost');
 Route ::get('restorePost/{id}',[PostController::class,'restore_post'])->name('restorePost');
+
+//Day7
+Route::get('test',function(){
+    return view('test');
+});
+
+Route::get('image',function(){
+    return view('image');
+});
+
+Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
