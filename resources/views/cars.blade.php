@@ -18,6 +18,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
+        <th>Image</th>
         <th>Edit</th>
         <th>Show</th>
         <th>Delete</th>
@@ -29,6 +30,7 @@
         <td>{{$car->title}}</td>
         <td>{{$car->description}}</td>
         <td>{{$car->published ? 'yes':'no'}}</td>
+        <td><img src="{{ asset('assets/images/' . $car->image) }}" alt="car" style="width: 150px;"></td>
         <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
         <td><a href="showCar/{{ $car->id }}">Show</a></td>
         <td><a href="deleteCar/{{ $car->id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>

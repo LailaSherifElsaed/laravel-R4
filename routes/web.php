@@ -112,7 +112,7 @@ Route ::get('cars',[CarController::class,'index'])->name('cars');
 //Day5
 Route ::get('updateCar/{id}',[CarController::class,'edit']);
 Route ::put('update/{id}',[CarController::class,'update'])->name('update');
-Route ::get('showCar/{id}',[CarController::class,'show'])->name('update');
+Route ::get('showCar/{id}',[CarController::class,'show'])->name('showCar');
 
 //Task4
 Route ::get('createPost',[PostController::class,'create'])->name('createPost');
@@ -121,7 +121,7 @@ Route ::get('posts',[PostController::class,'index'])->name('posts');
 
 //Task5
 Route ::get('updatePost/{id}',[PostController::class,'edit']);
-Route ::put('update/{id}',[PostController::class,'update'])->name('update');
+// Route ::put('update/{id}',[PostController::class,'update'])->name('update');
 
 
 

@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
 use App\Traits\Common;
+use Illuminate\Support\Facades\File;
 
 class CarController extends Controller
 {
     use Common;
-    private $columns = [
-        'title',
-        'description',
-        'published',
-        ];
+    // private $columns = [
+    //     'title',
+    //     'description',
+    //     'published',
+    //     ];
     /**
      * Display a listing of the resource.
      */
@@ -88,10 +89,28 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $car = Car::findOrFail($id);
         // $data=$request->only($this->columns);
-        // $data['published']=isset($request->published);
-        // Car::where('id', $id)->update($data);
-        // return redirect('cars');
+        $data=$request->validate([
+            'title'=>'required|string|max:50',
+            'description'=> 'required|string',
+            'image' => 'nullable|mimes:jpeg,bmp,png,jpg'
+        ]);
+        
+        $data['published']=isset($request->published);
+        if ($request->image) {
+        if ($car->image && File::exists(public_path('assets/images/' . $car->image))) {
+            File::delete(public_path('assets/images/' . $car->image));
+        }
+        $image = $request->image;
+        $fileName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('assets/images'), $fileName);
+        $data['image'] = $fileName;
+    } else {
+        $data['image'] = $car->image;
+    }
+    $car->update($data);
+    return redirect('cars');
     }
 
     /**
