@@ -139,11 +139,21 @@ Route ::get('restorePost/{id}',[PostController::class,'restore_post'])->name('re
 
 //Day7
 Route::get('test',function(){
-    return view('test');
-});
+    return view('testHome');
+})->name('testHome');
 
 Route::get('image',function(){
     return view('image');
 });
 
 Route::post('imageUpload',[ExampleController::class,'upload'])->name('imageUpload');
+
+//Day8
+Route::get('404',function(){
+    return view('404');
+})->name('404');
+
+Route::get('contactUs',function(){
+    return view('contactUs');
+})->name('contactUs');
+
