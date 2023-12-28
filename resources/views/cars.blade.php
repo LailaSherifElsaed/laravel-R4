@@ -17,6 +17,8 @@
       <tr>
         <th>Title</th>
         <th>Description</th>
+        <th>Category ID</th>
+        <!-- <th>Category name</th> -->
         <th>Published</th>
         <th>Image</th>
         <th>Edit</th>
@@ -29,6 +31,8 @@
       <tr>
         <td>{{$car->title}}</td>
         <td>{{$car->description}}</td>
+        <td>{{$car->category_id}}</td>
+        <!-- <td>{{$car->category->cat_name}}</td> -->
         <td>{{$car->published ? 'yes':'no'}}</td>
         <td><img src="{{ asset('assets/images/' . $car->image) }}" alt="car" style="width: 150px;"></td>
         <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
