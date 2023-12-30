@@ -14,5 +14,6 @@
     <h5>{{$car->published ?"Published":"Not Published"}}</h5>
     <h5>Image:</h5>
     <img src="{{ asset('assets/images/' . $car->image) }}" alt="car" style="width: 200px;">
+    <h2>Category:{{$car->category->cat_name}}</h2>
 </body>
 </html>

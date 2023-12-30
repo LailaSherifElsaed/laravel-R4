@@ -22,6 +22,18 @@
       @enderror
     </div>
     <div class="form-group">
+      <label for="category">Category:</label>
+      <select name="category_id" id="">
+        <option value=""> Select Category</option>
+        @foreach($categories as $category)
+          <option value="{{$category->id}}">{{$category->cat_name}}</option>
+        @endforeach
+      </select>
+      @error('category')
+        {{ $message }}
+      @enderror
+    </div>
+    <div class="form-group">
       <label for="description">description:</label>
       <textarea class="form-control" name="description" id="" cols="60" rows="3">{{ old('description') }}</textarea>
       @error('description')
