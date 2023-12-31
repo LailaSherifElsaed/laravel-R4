@@ -80,14 +80,16 @@ class CarController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
+     
+ * Show the form for editing the specified resource.
+ */
     public function edit(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('updateCar',compact('car'));
+        $categories = Category::all();
+        $currentCategoryId = $car->category_id;
+        return view('updateCar', compact('car', 'categories', 'currentCategoryId'));
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -98,7 +100,8 @@ class CarController extends Controller
         $data=$request->validate([
             'title'=>'required|string|max:50',
             'description'=> 'required|string',
-            'image' => 'nullable|mimes:jpeg,bmp,png,jpg'
+            'image' => 'nullable|mimes:jpeg,bmp,png,jpg',
+            'category_id' =>'required|string'
         ]);
         
         $data['published']=isset($request->published);
