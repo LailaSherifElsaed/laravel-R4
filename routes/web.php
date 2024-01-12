@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -154,14 +155,13 @@ Route::get('404',function(){
     return view('404');
 })->name('404');
 
-Route::get('contactUs',function(){
-    return view('contactUs');
-})->name('contactUs');
-
-
 
 Auth::routes(['verify'=>true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Session 12
 Route :: get('test20',[ExampleController::class,'createSession']);
+
+//Task 12
+Route::get('contactUs',[ContactController::class,'contact'])->name('contactUs');
+Route::post('contact_mail',[ContactController::class,'sendContactEmail'])->name('contact_mail');
