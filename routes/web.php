@@ -105,7 +105,7 @@ Route::prefix('blog')->group(function () {
 
 //Day4
 
-Route ::get('createCar',[CarController::class,'create'])->name('createCar');
+Route ::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
 Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
 Route ::get('cars',[CarController::class,'index'])->name('cars');
 
@@ -130,6 +130,7 @@ Route ::get('deleteCar/{id}',[CarController::class,'destroy']);
 Route ::get('trashed',[CarController::class,'trashed'])->name('trashed');
 Route ::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
 Route ::get('restoreCar/{id}',[CarController::class,'restoreCar'])->name('restoreCar');
+
 
 //Task6
 Route ::get('deletePost/{id}',[PostController::class,'destroy']);
@@ -157,3 +158,10 @@ Route::get('contactUs',function(){
     return view('contactUs');
 })->name('contactUs');
 
+
+
+Auth::routes(['verify'=>true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Session 12
+Route :: get('test20',[ExampleController::class,'createSession']);
